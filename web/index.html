@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Очень · конструктор иллюстраций</title>
+<link rel="stylesheet" href="/web/styles.css">
+<header><a class="brand" href="/">очень<span> / иллюстрации</span></a><span class="tag">Из готовых деталей — новые истории</span><button id="export" class="primary" disabled>Скачать SVG ↗</button></header>
+<main>
+<aside class="library"><div class="eyebrow">01 / БИБЛИОТЕКА</div><h1>Что будет<br>в вашей истории?</h1><p class="muted">Выберите предметы или введите их названия через запятую.</p>
+<label for="names">Названия компонентов</label><textarea id="names" placeholder="Книга, лампа, наушники" rows="2"></textarea>
+<div id="library" class="cards"></div><button id="compose" class="primary wide">Собрать композицию →</button><button id="clear" class="quiet wide">Снять выбор</button>
+</aside>
+<section class="workspace"><div class="workspace-top"><div><div class="eyebrow">02 / КОМПОЗИЦИЯ</div><h2>Место для вашей идеи</h2></div><span id="dimensions">1200 × 630</span></div>
+<div class="stage"><div id="canvas"><div class="empty"><span>✳</span><h2>Начнём с предметов</h2><p>Выберите несколько деталей слева.<br>Мы найдём для них место на холсте.</p></div></div></div>
+<div class="caption"><span>Векторные оригиналы · общие пропорции сохранены</span><span id="count">0 объектов</span></div>
+<div id="status" role="status" aria-live="polite">Библиотека загружается…</div>
+<div class="help">Перетаскивайте предметы на холсте. Для точной настройки выберите слой справа.</div>
+</section>
+<aside class="settings"><div class="eyebrow">03 / НАСТРОЙКИ</div><h2>Собрать по-своему</h2>
+<label for="format">Формат холста</label><select id="format"><option value="1200,630">Горизонтальный · 1200 × 630</option><option value="1000,1000">Квадрат · 1000 × 1000</option><option value="630,1200">Вертикальный · 630 × 1200</option></select>
+<label for="size">Детализация оригиналов</label><select id="size"><option value="L">L · подробные</option><option value="S">S · упрощённые</option></select>
+<label for="layout">Расположение</label><select id="layout"><option value="balanced">Сбалансированное</option><option value="diagonal">По диагонали</option><option value="title">Место под заголовок слева</option></select>
+<label for="palette">Цветовая схема</label><select id="palette"><option value="purple">Лавандовая</option><option value="peach">Персиковая</option><option value="teal">Бирюзовая</option></select>
+<p class="hint">Формат, детализация и расположение пересобирают сцену. Палитра сохраняет позиции.</p>
+<hr><h3>Слои <span class="muted">· сверху вниз</span></h3><div id="layers" class="layers"></div>
+<fieldset id="editor" disabled><legend>Выбранный предмет</legend><label for="role">Состояние</label><select id="role"><option value="main">Главный · цветной</option><option value="background">Фоновый · монохромный</option></select>
+<label for="angle">Поворот <output id="angleValue">0°</output></label><input id="angle" type="range" min="-180" max="180" step="5" value="0">
+<div class="actions"><button id="up">Выше ↑</button><button id="down">Ниже ↓</button><button id="duplicate">Дублировать</button><button id="delete">Удалить</button></div></fieldset>
+</aside></main><script src="/web/app.js" defer></script></html>
