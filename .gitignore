@@ -1,0 +1,36 @@
+# Local tools used to inspect the user's recording
+/.video-tools/
+/video-contact.jpg
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets (keep a template with dummy values in Git)
+.env
+.env.*
+!.env.example
+
+# Installed JavaScript dependencies and build output
+node_modules/
+/dist/
+/build/
+
+# Generated previews and user exports
+docs/contact-*.png
+/exports/
+/tmp/
+*.log
+
+# Machine-specific editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini

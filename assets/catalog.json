@@ -1,0 +1,677 @@
+{
+  "version": 1,
+  "objects": [
+    {
+      "id": "book",
+      "label": "Книга",
+      "tags": [
+        "книга",
+        "знания",
+        "обучение",
+        "чтение"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Книга.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              1446.0,
+              977.0
+            ],
+            "sha256": "68829d512f20f3f8f4007cd0222a67c4caf2e520c798f0d25b341b0bac329e34",
+            "pathCount": 53
+          },
+          "background": {
+            "path": "assets/source/L/Книга-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              1446.0,
+              977.0
+            ],
+            "sha256": "40dbb5f7ba177336a61c6ad30830ff1213001f5bcc88db97a964d7ef19691ca8",
+            "pathCount": 53
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Group 2136136335.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              723.0,
+              489.0
+            ],
+            "sha256": "861fe0817abff8552212eb3817d2e03363c279787937493af6a861cd4ce544da",
+            "pathCount": 51
+          },
+          "background": {
+            "path": "assets/source/S/Group 2136136341.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              723.0,
+              489.0
+            ],
+            "sha256": "e67afd9b7967394b81ebb63ff6a363b1015e57f3e204dee3c141e59ccbdf19e6",
+            "pathCount": 54
+          }
+        }
+      }
+    },
+    {
+      "id": "phone",
+      "label": "Телефон",
+      "tags": [
+        "телефон",
+        "связь",
+        "технологии",
+        "онлайн"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Телефон.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              797.0,
+              462.0
+            ],
+            "sha256": "212505ebd177da83d300e79aeba18f3e51d8f37b63bc0ed097ca62fe44323114",
+            "pathCount": 155
+          },
+          "background": {
+            "path": "assets/source/L/Телефон-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              797.0,
+              462.0
+            ],
+            "sha256": "9434f37dce2d217f0fecb8ad54cab323ba4c193f3b2ca3251167f9f5db49b728",
+            "pathCount": 155
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Телефон.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              399.0,
+              231.0
+            ],
+            "sha256": "a52c5ab92dd2387468257950e91770de7749d5cc43d393d2a783015d93df62e2",
+            "pathCount": 96
+          },
+          "background": {
+            "path": "assets/source/S/Телефон-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              399.0,
+              231.0
+            ],
+            "sha256": "8b643c80de22b9342ec51b87ff1b7453f8e1825f5890c27f02b32d46b7d3e86e",
+            "pathCount": 155
+          }
+        }
+      }
+    },
+    {
+      "id": "puzzle",
+      "label": "Пазлы",
+      "tags": [
+        "пазлы",
+        "команда",
+        "решение",
+        "сотрудничество"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Пазлы.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              545.0,
+              314.0
+            ],
+            "sha256": "aa421956a60050153ae59b326b6bf7292047ac9b31f36382108092f436d453c5",
+            "pathCount": 57
+          },
+          "background": {
+            "path": "assets/source/L/Пазлы-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              545.0,
+              314.0
+            ],
+            "sha256": "822607ace9afa60fb3ba0c5f30fb3ac141d5ad2858ffbdd92629f6fc7982cf78",
+            "pathCount": 57
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Пазлы.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              273.0,
+              157.0
+            ],
+            "sha256": "b12beb5951f6dfde0e864cb61769a3904cb9f47fb8e3cf81a10d9d76c2ef0706",
+            "pathCount": 57
+          },
+          "background": {
+            "path": "assets/source/S/Пазлы-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              273.0,
+              157.0
+            ],
+            "sha256": "4933d8f7c5240d5bc438c93710ee0273f15fb38b3d015162f0da7823222a92ec",
+            "pathCount": 57
+          }
+        }
+      }
+    },
+    {
+      "id": "coin",
+      "label": "Монета",
+      "tags": [
+        "монета",
+        "деньги",
+        "инвестиции",
+        "экономия"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Монета.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              287.0,
+              189.0
+            ],
+            "sha256": "586739a9eda53b8c8244f04a636cf7ef07e27b7242fde5650d1894505113f248",
+            "pathCount": 136
+          },
+          "background": {
+            "path": "assets/source/L/Монета-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              287.0,
+              189.0
+            ],
+            "sha256": "81a2baf3f608bda1cfe57d73d71382e3cfb2d541f5b7710e91f30e7d2c54c4ef",
+            "pathCount": 136
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Монета.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              153.0,
+              101.0
+            ],
+            "sha256": "30304fba87a87548cbd09061c19764c45caf051094cea17194e9ae25de532c13",
+            "pathCount": 130
+          },
+          "background": {
+            "path": "assets/source/S/Монета-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              153.0,
+              101.0
+            ],
+            "sha256": "9bb11014607170341c110b3739d941ca07341991adb45d17c8aa643f4579c003",
+            "pathCount": 136
+          }
+        }
+      }
+    },
+    {
+      "id": "headphones",
+      "label": "Наушники",
+      "tags": [
+        "наушники",
+        "музыка",
+        "фокус",
+        "аудио"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Наушники.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              889.0,
+              692.0
+            ],
+            "sha256": "92331c4dd96e99ad1464e62e8ef5d3e00dc3017d66d0f92012da993d2d1cb35a",
+            "pathCount": 84
+          },
+          "background": {
+            "path": "assets/source/L/Наушники-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              889.0,
+              692.0
+            ],
+            "sha256": "b7d7b514669180eb6bdd09450b6763328b24bbfe400a2a42f84c7b2e9503be94",
+            "pathCount": 84
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Наушники.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              445.0,
+              346.0
+            ],
+            "sha256": "2ea8818acf331d794f702e57bcd61d9202cc06a507bf45b466af260fe5b479b5",
+            "pathCount": 79
+          },
+          "background": {
+            "path": "assets/source/S/Наушники-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              445.0,
+              346.0
+            ],
+            "sha256": "24c42387a6c5a50e2e1f930ba0d9d5be0881c0bc4f66eed0d7e9cd50827892dc",
+            "pathCount": 84
+          }
+        }
+      }
+    },
+    {
+      "id": "lamp",
+      "label": "Лампа",
+      "tags": [
+        "лампа",
+        "свет",
+        "идея",
+        "работа"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Лампа.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              946.0,
+              1129.0
+            ],
+            "sha256": "046415a0303750389e6bdc35c42111d1c86d14ff1f27b1997c78aa1716d677f5",
+            "pathCount": 27
+          },
+          "background": {
+            "path": "assets/source/L/Лампа-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              946.0,
+              1129.0
+            ],
+            "sha256": "de5957aca823b48a4d5648323b5ecd2ef7a4bdec99994d47f62e113d9837c7be",
+            "pathCount": 27
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Лампа.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              473.0,
+              565.0
+            ],
+            "sha256": "917f86b7df1e2ac24c8546bd8c444d94f9281a368d8d6bf8f01cfea0794eafd2",
+            "pathCount": 27
+          },
+          "background": {
+            "path": "assets/source/S/Лампа-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              473.0,
+              565.0
+            ],
+            "sha256": "17c10fcb447aba0c4bb8994073752f84b3c4e763a5a29598808b3d57b885dfe8",
+            "pathCount": 27
+          }
+        }
+      }
+    },
+    {
+      "id": "flowers",
+      "label": "Цветы",
+      "tags": [
+        "цветы",
+        "подарок",
+        "забота",
+        "рост"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Group 2136136344.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              591.0,
+              748.0
+            ],
+            "sha256": "61b53b61ed3100249ba2c89f314eadaa8be6f31549ed871905779258a1a3e739",
+            "pathCount": 131
+          },
+          "background": {
+            "path": "assets/source/L/Group 2136136347.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              591.0,
+              748.0
+            ],
+            "sha256": "13628cfeb28e73334c68ded69e348b89ebc81ea4b59cacb8a5f3408279d783a4",
+            "pathCount": 131
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Group 2136136345.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              324.0,
+              409.0
+            ],
+            "sha256": "8dc8a0050327c8102ebbf0e46c0b869329ba4fd5815a695cf6474e5f1d389f71",
+            "pathCount": 131
+          },
+          "background": {
+            "path": "assets/source/S/Group 2136136346.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              324.0,
+              409.0
+            ],
+            "sha256": "a94baa3a6026397fd6867dcabcf3a229c670d71a2f4be718c8d688778d7ffbf6",
+            "pathCount": 131
+          }
+        }
+      }
+    },
+    {
+      "id": "wallet",
+      "label": "Кошелек",
+      "tags": [
+        "кошелек",
+        "кошелёк",
+        "бюджет",
+        "финансы"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Кошелек.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              631.0,
+              397.0
+            ],
+            "sha256": "2ce2224df5563d73ef064d1b9e71438ecf464aac57b23b1424e7ed1e08e99bcd",
+            "pathCount": 86
+          },
+          "background": {
+            "path": "assets/source/L/Кошелек-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              631.0,
+              397.0
+            ],
+            "sha256": "fc9c1e0615a5fff73e9033b19e71238d0a6b92f3c80aacbcde2eab022e6535a3",
+            "pathCount": 86
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Кошелек.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              316.0,
+              199.0
+            ],
+            "sha256": "7d4286ccbc485f017848a83fc4ee6bf6fb0393080912eddd7bb41734fa4b1e46",
+            "pathCount": 83
+          },
+          "background": {
+            "path": "assets/source/S/Кошелек-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              316.0,
+              199.0
+            ],
+            "sha256": "67e7b2d7ed6908fac70d9b6fb9b7e066fd93eb421e0cde1a9811676d103e62c6",
+            "pathCount": 86
+          }
+        }
+      }
+    },
+    {
+      "id": "folder",
+      "label": "Папка",
+      "tags": [
+        "папка",
+        "документы",
+        "порядок",
+        "проект"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Папка.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              1241.0,
+              659.0
+            ],
+            "sha256": "e1037dd7a46055af35529ee6dfebf3cd19f1e8e20af62fee562d35acc5f01251",
+            "pathCount": 22
+          },
+          "background": {
+            "path": "assets/source/L/Папка-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              1241.0,
+              659.0
+            ],
+            "sha256": "96056b71114aeb435e1221722afe0e0adcbd2a1a76d9aee776a4e42d30a4fb0c",
+            "pathCount": 22
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Group 2136136337.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              621.0,
+              330.0
+            ],
+            "sha256": "2cc2d67c7cb5949b98b35f87f02f9267b10666752d4e338b1225382cf1b678c4",
+            "pathCount": 20
+          },
+          "background": {
+            "path": "assets/source/S/Group 2136136342.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              621.0,
+              330.0
+            ],
+            "sha256": "ecd331e4023676b93e67069586fff55e2e0a90ec046ad27489c05caabac5befd",
+            "pathCount": 22
+          }
+        }
+      }
+    },
+    {
+      "id": "pen",
+      "label": "Ручка",
+      "tags": [
+        "ручка",
+        "письмо",
+        "творчество",
+        "план"
+      ],
+      "variants": {
+        "L": {
+          "main": {
+            "path": "assets/source/L/Ручка.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              509.0,
+              286.0
+            ],
+            "sha256": "984f57e42399caa21c5e7b5e55cb9a6c52bc3b50260bc93fc15c418ce244685d",
+            "pathCount": 24
+          },
+          "background": {
+            "path": "assets/source/L/Ручка-1.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              509.0,
+              286.0
+            ],
+            "sha256": "34cae2dc78723dc436e67a541aed23e28fa49135a1ec5b695dda2a7e9d95e84a",
+            "pathCount": 24
+          }
+        },
+        "S": {
+          "main": {
+            "path": "assets/source/S/Group 2136136336.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              255.0,
+              143.0
+            ],
+            "sha256": "6ec363fbc5e722765ddd51d52a1f35f2963bc2a8effe29e6e28d653ef5b8bbe2",
+            "pathCount": 24
+          },
+          "background": {
+            "path": "assets/source/S/Group 2136136343.svg",
+            "viewBox": [
+              0.0,
+              0.0,
+              255.0,
+              143.0
+            ],
+            "sha256": "45495afdce7f82c926b3b8ab6688244202549cc969391ff992c328288b1bf0e1",
+            "pathCount": 24
+          }
+        }
+      }
+    }
+  ],
+  "backgrounds": {
+    "L": {
+      "purple": {
+        "path": "assets/source/L/Фон.svg",
+        "viewBox": [
+          0.0,
+          0.0,
+          1000.0,
+          1000.0
+        ],
+        "sha256": "6ac7a9bd8e0bfb06369e2691ee34195987543eab3c71aa55cadc9de199b5e618",
+        "pathCount": 8
+      },
+      "teal": {
+        "path": "assets/source/L/Фон-1.svg",
+        "viewBox": [
+          0.0,
+          0.0,
+          1000.0,
+          1000.0
+        ],
+        "sha256": "b10e59e414c4389b513d6a85223b5903d242241e5d3fd8275a4952c1f9746420",
+        "pathCount": 8
+      },
+      "peach": {
+        "path": "assets/source/L/Фон-2.svg",
+        "viewBox": [
+          0.0,
+          0.0,
+          1000.0,
+          1000.0
+        ],
+        "sha256": "50c387cca955434a2f0d0c6a72ae29fc752cd2da20a9c6495ad1cce6f5f280cd",
+        "pathCount": 1
+      }
+    },
+    "S": {
+      "purple": {
+        "path": "assets/source/S/Фон.svg",
+        "viewBox": [
+          0.0,
+          0.0,
+          500.0,
+          500.0
+        ],
+        "sha256": "9c698f8d469b60d2d923ba35f484a90e5188427f0bf66f3a23b1aaf73bec01fc",
+        "pathCount": 8
+      },
+      "teal": {
+        "path": "assets/source/S/Фон-1.svg",
+        "viewBox": [
+          0.0,
+          0.0,
+          500.0,
+          500.0
+        ],
+        "sha256": "340f30ba2cec47909c7d591618f1e76abc140e326dd4bae3dc8273dbdaed6cb9",
+        "pathCount": 8
+      },
+      "peach": {
+        "path": "assets/source/S/Фон-2.svg",
+        "viewBox": [
+          0.0,
+          0.0,
+          500.0,
+          500.0
+        ],
+        "sha256": "98fb9f4f20dece104911269d233831d1c76042753c64a4218da0242779e462a2",
+        "pathCount": 1
+      }
+    }
+  }
+}

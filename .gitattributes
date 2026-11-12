@@ -1,0 +1,15 @@
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+# Preserve original SVG bytes, including their recorded SHA-256 values.
+*.svg -text
+*.png binary
+*.jpg binary
+*.zip binary
