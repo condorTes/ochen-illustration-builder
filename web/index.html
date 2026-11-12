@@ -6,8 +6,10 @@
 <header><a class="brand" href="/">очень<span> / иллюстрации</span></a><span class="tag">Из готовых деталей — новые истории</span><button id="export" class="primary" disabled>Скачать SVG ↗</button></header>
 <main>
 <aside class="library"><div class="eyebrow">01 / БИБЛИОТЕКА</div><h1>Что будет<br>в вашей истории?</h1><p class="muted">Выберите предметы или введите их названия через запятую.</p>
-<label for="names">Названия компонентов</label><textarea id="names" placeholder="Книга, лампа, наушники" rows="2"></textarea>
-<div id="library" class="cards"></div><button id="compose" class="primary wide">Собрать композицию →</button><button id="clear" class="quiet wide">Снять выбор</button>
+<label for="mode">Как собрать иллюстрацию?</label><select id="mode"><option value="objects">Из выбранных предметов</option><option value="idea">По идее · ИИ</option></select>
+<section id="ideaPanel" hidden><label for="idea">Метафора или заголовок</label><textarea id="idea" maxlength="600" placeholder="Инвестиции в знания" rows="3"></textarea><p class="hint" id="aiHint">ИИ выбирает только готовые предметы. Текст идеи отправляется в Groq.</p><button id="ideaExample" class="quiet">Попробовать «Инвестиции в знания»</button></section>
+<section id="namesPanel"><label for="names">Названия компонентов</label><textarea id="names" placeholder="Книга, лампа, наушники" rows="2"></textarea></section>
+<div id="library" class="cards"></div><button id="compose" class="primary wide">Собрать композицию →</button><button id="clear" class="quiet wide">Очистить выбор предметов</button>
 </aside>
 <section class="workspace"><div class="workspace-top"><div><div class="eyebrow">02 / КОМПОЗИЦИЯ</div><h2>Место для вашей идеи</h2></div><span id="dimensions">1200 × 630</span></div>
 <div class="stage"><div id="canvas"><div class="empty"><span>✳</span><h2>Начнём с предметов</h2><p>Выберите несколько деталей слева.<br>Мы найдём для них место на холсте.</p></div></div></div>
@@ -24,5 +26,5 @@
 <hr><h3>Слои <span class="muted">· сверху вниз</span></h3><div id="layers" class="layers"></div>
 <fieldset id="editor" disabled><legend>Выбранный предмет</legend><label for="role">Состояние</label><select id="role"><option value="main">Главный · цветной</option><option value="background">Фоновый · монохромный</option></select>
 <label for="angle">Поворот <output id="angleValue">0°</output></label><input id="angle" type="range" min="-180" max="180" step="5" value="0">
-<div class="actions"><button id="up">Выше ↑</button><button id="down">Ниже ↓</button><button id="duplicate">Дублировать</button><button id="delete">Удалить</button></div></fieldset>
+<div class="actions"><button id="up" title="Поднять предмет на один слой: он перекроет соседний">На слой вперёд</button><button id="down" title="Опустить предмет на один слой: соседний окажется перед ним">На слой назад</button><button id="duplicate">Дублировать</button><button id="delete">Удалить</button></div></fieldset>
 </aside></main><script src="/web/app.js" defer></script></html>

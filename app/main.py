@@ -9,6 +9,7 @@ from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from typing import Literal
+from app.ai import select_objects, settings
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = json.loads((ROOT / 'assets/catalog.json').read_text(encoding='utf-8'))
@@ -36,6 +37,7 @@ class Scene(BaseModel):
 
 
 class Compose(BaseModel):
+    idea: str = Field(default='', max_length=600)
     names: str = Field(default='', max_length=1000)
     ids: list[str] = Field(default_factory=list, max_length=10)
     width: int = Field(default=1200, ge=200, le=4000)
@@ -162,10 +164,25 @@ def catalog():
     return CATALOG
 
 
+@app.get('/api/capabilities')
+def capabilities():
+    return {'ai_available': bool(settings()['GROQ_API_KEY'])}
+
+
 @app.post('/api/compose')
 def compose(req: Compose):
+    selection = None
+    if req.idea.strip():
+        selection = select_objects(req.idea, OBJECTS)
+        req = req.model_copy(update={'names':'','ids':[i.id for i in selection.items]})
     scene=compose_scene(req)
-    return {'scene':scene.model_dump(), 'svg':render_svg(scene)}
+    if selection:
+        roles = {i.id:i.role for i in selection.items}
+        for item in scene.items:
+            item.role = roles[item.id]
+        scene.items.sort(key=lambda item:item.role=='main')
+    return {'scene':scene.model_dump(), 'svg':render_svg(scene),
+            'explanation':selection.explanation if selection else None}
 
 
 @app.post('/api/render')
