@@ -7,7 +7,8 @@ import xml.etree.ElementTree as ET
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
+from typing import Annotated
 from typing import Literal
 from app.ai import select_objects, settings
 
@@ -27,7 +28,18 @@ class Item(BaseModel):
     role: Literal['main', 'background'] = 'main'
 
 
+HexColor = Annotated[str, Field(pattern=r'^#[0-9a-fA-F]{6}$')]
+
+
+class Palette(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    name: str = Field(default='Моя палитра', max_length=60)
+    background: list[HexColor] = Field(min_length=3, max_length=3)
+    objects: list[HexColor] = Field(min_length=3, max_length=3)
+
+
 class Scene(BaseModel):
+    custom_palette: Palette | None = None
     width: int = Field(default=1200, ge=200, le=4000)
     height: int = Field(default=630, ge=200, le=4000)
     size: Literal['L', 'S'] = 'L'
@@ -117,7 +129,7 @@ COLOR_MAPS = {
 }
 
 
-def load_svg(relative, prefix, palette=None):
+def load_svg(relative, prefix, palette=None, custom_map=None):
     root=ET.fromstring((ROOT/relative).read_bytes())
     mapping={n.attrib['id']: prefix+n.attrib['id'] for n in root.iter() if 'id' in n.attrib}
     for node in root.iter():
@@ -129,8 +141,9 @@ def load_svg(relative, prefix, palette=None):
                     value=value.replace(f'url(#{old})', f'url(#{new})')
                     if attr.endswith('href') and value=='#'+old:
                         value='#'+new
-                if palette and attr in ('fill','stroke'):
-                    value=COLOR_MAPS[palette].get(value.lower(),value)
+                if attr in ('fill','stroke'):
+                    colors=custom_map if custom_map is not None else COLOR_MAPS.get(palette,{})
+                    value=colors.get(value.lower(),value)
                 node.set(attr,value)
     return root
 
@@ -139,7 +152,16 @@ def render_svg(scene):
     root=ET.Element(f'{{{NS}}}svg', {'width':str(scene.width),'height':str(scene.height),
                     'viewBox':f'0 0 {scene.width} {scene.height}', 'fill':'none'})
     ET.SubElement(root,f'{{{NS}}}title').text='Композиция · очень'
-    bg=load_svg(CATALOG['backgrounds'][scene.size][scene.palette]['path'],'bg-')
+    custom=None
+    if scene.custom_palette:
+        custom=dict(zip(['#d7cdf5','#aa9bf0','#7864d7','#f9ecb0','#f9a3aa','#ffe3e1'],
+                        scene.custom_palette.background+scene.custom_palette.objects))
+    bg_colors={
+        'purple':['#d7cdf5','#aa9bf0','#7864d7'],
+        'teal':['#beebeb','#80dada','#5abebe'],
+        'peach':['#fdd7b9','#fac896','#d27532']}[scene.palette]
+    bg_map=dict(zip(bg_colors,scene.custom_palette.background)) if custom is not None else None
+    bg=load_svg(CATALOG['backgrounds'][scene.size][scene.palette]['path'],'bg-',custom_map=bg_map)
     # Crop, never stretch, the original square background to the chosen format.
     bg.set('width',str(scene.width)); bg.set('height',str(scene.height))
     bg.set('preserveAspectRatio','xMidYMid slice')
@@ -147,7 +169,7 @@ def render_svg(scene):
     for index,item in enumerate(scene.items):
         w,h=dimensions(item.id,scene.size)
         variant=OBJECTS[item.id]['variants'][scene.size][item.role]
-        source=load_svg(variant['path'],f'item-{index}-',scene.palette)
+        source=load_svg(variant['path'],f'item-{index}-',scene.palette,custom)
         group=ET.SubElement(root,f'{{{NS}}}g',{
             'id':f'object-{index}-{item.id}', 'data-index':str(index),
             'transform':f'translate({item.x} {item.y}) scale({scene.scale}) rotate({item.angle} {w/2} {h/2})'})
@@ -162,6 +184,43 @@ def render_svg(scene):
 @app.get('/api/catalog')
 def catalog():
     return CATALOG
+
+
+class Adapt(BaseModel):
+    scene: Scene
+    width: int = Field(ge=200, le=4000)
+    height: int = Field(ge=200, le=4000)
+    size: Literal['L','S']
+
+
+@app.post('/api/adapt')
+def adapt(req: Adapt):
+    scene=req.scene.model_copy(deep=True)
+    factor=min(req.width/scene.width,req.height/scene.height)
+    source_factor=2 if scene.size=='L' and req.size=='S' else .5 if scene.size=='S' and req.size=='L' else 1
+    scale=scene.scale*factor*source_factor
+    if not 0<scale<=5:
+        raise HTTPException(422,'Для этого размера масштаб слишком велик. Выберите другой формат.')
+    for item in scene.items:
+        ow,oh=dimensions(item.id,scene.size)
+        nw,nh=dimensions(item.id,req.size)
+        cx=(item.x+ow*scene.scale/2)/scene.width
+        cy=(item.y+oh*scene.scale/2)/scene.height
+        item.x=cx*req.width-nw*scale/2
+        item.y=cy*req.height-nh*scale/2
+    scene.width,scene.height,scene.size,scene.scale=req.width,req.height,req.size,scale
+    scene=Scene.model_validate(scene.model_dump())
+    return {'scene':scene.model_dump(),'svg':render_svg(scene)}
+
+
+@app.post('/api/scene')
+def validate_scene(scene: Scene):
+    return {'scene':scene.model_dump(),'svg':render_svg(scene)}
+
+
+@app.post('/api/palette')
+def validate_palette(palette: Palette):
+    return palette
 
 
 @app.get('/api/capabilities')

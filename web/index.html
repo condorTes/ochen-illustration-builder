@@ -12,7 +12,7 @@
 <div id="library" class="cards"></div><button id="compose" class="primary wide">Собрать композицию →</button><button id="clear" class="quiet wide">Очистить выбор предметов</button>
 </aside>
 <section class="workspace"><div class="workspace-top"><div><div class="eyebrow">02 / КОМПОЗИЦИЯ</div><h2>Место для вашей идеи</h2></div><span id="dimensions">1200 × 630</span></div>
-<div class="stage"><div id="canvas"><div class="empty"><span>✳</span><h2>Начнём с предметов</h2><p>Выберите несколько деталей слева.<br>Мы найдём для них место на холсте.</p></div></div></div>
+<div class="toolbar" aria-label="Действия со сценой"><button id="undo" disabled title="Ctrl+Z">↶ Отменить</button><button id="redo" disabled title="Ctrl+Shift+Z">↷ Повторить</button><button id="saveScene" disabled>Сохранить проект</button><button id="openScene">Открыть проект</button><button id="clearScene" disabled>Очистить холст</button><input id="sceneFile" type="file" accept=".json,application/json" hidden></div><div class="stage"><div id="canvas"><div class="empty"><span>✳</span><h2>Начнём с предметов</h2><p>Выберите несколько деталей слева.<br>Мы найдём для них место на холсте.</p></div></div></div>
 <div class="caption"><span>Векторные оригиналы · общие пропорции сохранены</span><span id="count">0 объектов</span></div>
 <div id="status" role="status" aria-live="polite">Библиотека загружается…</div>
 <div class="help">Перетаскивайте предметы на холсте. Для точной настройки выберите слой справа.</div>
@@ -22,9 +22,13 @@
 <label for="size">Детализация оригиналов</label><select id="size"><option value="L">L · подробные</option><option value="S">S · упрощённые</option></select>
 <label for="layout">Расположение</label><select id="layout"><option value="balanced">Сбалансированное</option><option value="diagonal">По диагонали</option><option value="title">Место под заголовок слева</option></select>
 <label for="palette">Цветовая схема</label><select id="palette"><option value="purple">Лавандовая</option><option value="peach">Персиковая</option><option value="teal">Бирюзовая</option></select>
-<p class="hint">Формат, детализация и расположение пересобирают сцену. Палитра сохраняет позиции.</p>
+<p class="hint">Формат и S/L сохраняют слои и правки. Новая раскладка размещает предметы заново; её можно отменить.</p>
+<div class="actions"><button id="loadPalette">Загрузить палитру</button><button id="paletteExample">Скачать образец</button></div>
+<input id="paletteFile" type="file" accept=".json,application/json" hidden>
+<div id="swatches" class="swatches" aria-label="Цвета палитры"></div><p id="paletteName" class="hint">Выбрана палитра из библиотеки</p>
+<button id="resetPalette" class="quiet" hidden>Вернуть исходные цвета</button>
 <hr><h3>Слои <span class="muted">· сверху вниз</span></h3><div id="layers" class="layers"></div>
 <fieldset id="editor" disabled><legend>Выбранный предмет</legend><label for="role">Состояние</label><select id="role"><option value="main">Главный · цветной</option><option value="background">Фоновый · монохромный</option></select>
 <label for="angle">Поворот <output id="angleValue">0°</output></label><input id="angle" type="range" min="-180" max="180" step="5" value="0">
 <div class="actions"><button id="up" title="Поднять предмет на один слой: он перекроет соседний">На слой вперёд</button><button id="down" title="Опустить предмет на один слой: соседний окажется перед ним">На слой назад</button><button id="duplicate">Дублировать</button><button id="delete">Удалить</button></div></fieldset>
-</aside></main><script src="/web/app.js" defer></script></html>
+</aside></main><script src="/web/app.js" defer></script><script src="/web/editor.js" defer></script></html>
