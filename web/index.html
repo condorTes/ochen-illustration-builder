@@ -12,7 +12,7 @@
 <div id="library" class="cards"></div><button id="compose" class="primary wide">Собрать композицию →</button><button id="clear" class="quiet wide">Очистить выбор предметов</button>
 </aside>
 <section class="workspace"><div class="workspace-top"><div><div class="eyebrow">02 / КОМПОЗИЦИЯ</div><h2>Место для вашей идеи</h2></div><span id="dimensions">1200 × 630</span></div>
-<div class="toolbar" aria-label="Действия со сценой"><button id="undo" disabled title="Ctrl+Z">↶ Отменить</button><button id="redo" disabled title="Ctrl+Shift+Z">↷ Повторить</button><button id="saveScene" disabled>Сохранить проект</button><button id="openScene">Открыть проект</button><button id="clearScene" disabled>Очистить холст</button><input id="sceneFile" type="file" accept=".json,application/json" hidden></div><div class="stage"><div id="canvas"><div class="empty"><span>✳</span><h2>Начнём с предметов</h2><p>Выберите несколько деталей слева.<br>Мы найдём для них место на холсте.</p></div></div></div>
+<div class="demo-strip"><span>Попробовать без API:</span><button class="demo" data-example="learning">Инвестиции в знания</button><button class="demo" data-example="teamwork">Командная работа</button><button class="demo" data-example="focus">В фокусе</button><small>Готовые примеры — можно редактировать</small></div><div class="toolbar" aria-label="Действия со сценой"><button id="undo" disabled title="Ctrl+Z">↶ Отменить</button><button id="redo" disabled title="Ctrl+Shift+Z">↷ Повторить</button><button id="saveScene" disabled>Сохранить проект</button><button id="openScene">Открыть проект</button><button id="clearScene" disabled>Очистить холст</button><input id="sceneFile" type="file" accept=".json,application/json" hidden></div><div class="stage"><div id="canvas"><div class="empty"><span>✳</span><h2>Начнём с предметов</h2><p>Выберите несколько деталей слева.<br>Мы найдём для них место на холсте.</p></div></div></div>
 <div class="caption"><span>Векторные оригиналы · общие пропорции сохранены</span><span id="count">0 объектов</span></div>
 <div id="status" role="status" aria-live="polite">Библиотека загружается…</div>
 <div class="help">Перетаскивайте предметы на холсте. Для точной настройки выберите слой справа.</div>
@@ -20,9 +20,9 @@
 <aside class="settings"><div class="eyebrow">03 / НАСТРОЙКИ</div><h2>Собрать по-своему</h2>
 <label for="format">Формат холста</label><select id="format"><option value="1200,630">Горизонтальный · 1200 × 630</option><option value="1000,1000">Квадрат · 1000 × 1000</option><option value="630,1200">Вертикальный · 630 × 1200</option></select>
 <label for="size">Детализация оригиналов</label><select id="size"><option value="L">L · подробные</option><option value="S">S · упрощённые</option></select>
-<label for="layout">Расположение</label><select id="layout"><option value="balanced">Сбалансированное</option><option value="diagonal">По диагонали</option><option value="title">Место под заголовок слева</option></select>
+<label for="layout">Расположение</label><select id="layout"><option value="cluster">Выразительная композиция</option><option value="balanced">Сбалансированное</option><option value="diagonal">По диагонали</option><option value="title">Место под заголовок слева</option></select>
 <label for="palette">Цветовая схема</label><select id="palette"><option value="purple">Лавандовая</option><option value="peach">Персиковая</option><option value="teal">Бирюзовая</option></select>
-<p class="hint">Формат и S/L сохраняют слои и правки. Новая раскладка размещает предметы заново; её можно отменить.</p>
+<p class="hint">Формат и S/L сохраняют слои и правки. Новая раскладка меняет позиции, сохраняя слои и состояния. Её можно отменить.</p>
 <div class="actions"><button id="loadPalette">Загрузить палитру</button><button id="paletteExample">Скачать образец</button></div>
 <input id="paletteFile" type="file" accept=".json,application/json" hidden>
 <div id="swatches" class="swatches" aria-label="Цвета палитры"></div><p id="paletteName" class="hint">Выбрана палитра из библиотеки</p>

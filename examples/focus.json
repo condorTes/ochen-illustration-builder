@@ -1,0 +1,31 @@
+{
+  "custom_palette": null,
+  "width": 630,
+  "height": 1200,
+  "size": "S",
+  "palette": "peach",
+  "scale": 0.54313005143277,
+  "items": [
+    {
+      "id": "lamp",
+      "x": 335.2994856722998,
+      "y": 299.9695282880235,
+      "angle": 0,
+      "role": "background"
+    },
+    {
+      "id": "book",
+      "x": 37.80000000000001,
+      "y": 634.4398765613519,
+      "angle": 0,
+      "role": "background"
+    },
+    {
+      "id": "headphones",
+      "x": 226.8907274063189,
+      "y": 513.5391271124174,
+      "angle": 0,
+      "role": "main"
+    }
+  ]
+}

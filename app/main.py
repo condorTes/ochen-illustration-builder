@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import Annotated
 from typing import Literal
 from app.ai import select_objects, settings
+from app.layout import clustered_positions
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = json.loads((ROOT / 'assets/catalog.json').read_text(encoding='utf-8'))
@@ -56,7 +57,7 @@ class Compose(BaseModel):
     height: int = Field(default=630, ge=200, le=4000)
     size: Literal['L', 'S'] = 'L'
     palette: Literal['purple', 'teal', 'peach'] = 'purple'
-    layout: Literal['balanced', 'diagonal', 'title'] = 'balanced'
+    layout: Literal['cluster', 'balanced', 'diagonal', 'title'] = 'cluster'
 
 
 def dimensions(key, size):
@@ -88,6 +89,10 @@ def compose_scene(req):
     if len(ids) > 10:
         raise HTTPException(422, 'Для автоматической сборки доступно до 10 предметов.')
     dims = [dimensions(key, req.size) for key in ids]
+    if req.layout == 'cluster':
+        scale, positions = clustered_positions(dims, req.width, req.height)
+        return Scene(width=req.width,height=req.height,size=req.size,palette=req.palette,
+                     scale=scale,items=[Item(id=key,x=x,y=y) for key,(x,y) in zip(ids,positions)])
     # Equal scaling for every object preserves the source relative proportions.
     left = req.width * (.36 if req.layout == 'title' else .06)
     top = req.height * .08
@@ -172,7 +177,7 @@ def render_svg(scene):
         source=load_svg(variant['path'],f'item-{index}-',scene.palette,custom)
         group=ET.SubElement(root,f'{{{NS}}}g',{
             'id':f'object-{index}-{item.id}', 'data-index':str(index),
-            'transform':f'translate({item.x} {item.y}) scale({scene.scale}) rotate({item.angle} {w/2} {h/2})'})
+            'transform':f'translate({item.x:g} {item.y:g}) scale({scene.scale:.12g}) rotate({item.angle:g} {w/2:g} {h/2:g})'})
         ET.SubElement(group,f'{{{NS}}}title').text=OBJECTS[item.id]['label']
         # Preserve root presentation attributes such as fill="none" on nested SVG.
         source.set('width',str(w)); source.set('height',str(h))
@@ -191,6 +196,30 @@ class Adapt(BaseModel):
     width: int = Field(ge=200, le=4000)
     height: int = Field(ge=200, le=4000)
     size: Literal['L','S']
+
+
+class Relayout(BaseModel):
+    scene: Scene
+    layout: Literal['cluster','balanced','diagonal','title']
+
+
+@app.post('/api/relayout')
+def relayout(req: Relayout):
+    source=req.scene
+    if not source.items:
+        return {'scene':source.model_dump(),'svg':render_svg(source)}
+    ids=list(dict.fromkeys(item.id for item in source.items))
+    base=compose_scene(Compose(ids=ids,width=source.width,height=source.height,
+                               size=source.size,palette=source.palette,layout=req.layout))
+    positions={item.id:item for item in base.items}
+    # Retain original layer order, roles, angles and duplicate count.
+    base.items=[item.model_copy() for item in source.items]
+    seen={}
+    for item in base.items:
+        n=seen.get(item.id,0);seen[item.id]=n+1
+        item.x=positions[item.id].x+20*n;item.y=positions[item.id].y+20*n
+    base.custom_palette=source.custom_palette
+    return {'scene':base.model_dump(),'svg':render_svg(base)}
 
 
 @app.post('/api/adapt')
@@ -233,7 +262,8 @@ def compose(req: Compose):
     selection = None
     if req.idea.strip():
         selection = select_objects(req.idea, OBJECTS)
-        req = req.model_copy(update={'names':'','ids':[i.id for i in selection.items]})
+        ordered=sorted(selection.items,key=lambda i:i.role!='main')
+        req = req.model_copy(update={'names':'','ids':[i.id for i in ordered]})
     scene=compose_scene(req)
     if selection:
         roles = {i.id:i.role for i in selection.items}
@@ -253,6 +283,13 @@ def render(scene: Scene):
 def export(scene: Scene):
     return Response(render_svg(scene),media_type='image/svg+xml',
                     headers={'Content-Disposition':'attachment; filename="ochen-composition.svg"'})
+
+
+@app.get('/api/examples/{name}')
+def example(name: Literal['learning','teamwork','focus']):
+    path=ROOT/'examples'/f'{name}.json'
+    scene=Scene.model_validate_json(path.read_text(encoding='utf-8'))
+    return {'scene':scene.model_dump(),'svg':render_svg(scene)}
 
 
 @app.get('/')

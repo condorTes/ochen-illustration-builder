@@ -1,0 +1,31 @@
+{
+  "custom_palette": null,
+  "width": 1000,
+  "height": 1000,
+  "size": "L",
+  "palette": "teal",
+  "scale": 0.4363412783807772,
+  "items": [
+    {
+      "id": "folder",
+      "x": 60.0,
+      "y": 310.1828170787943,
+      "angle": 0,
+      "role": "background"
+    },
+    {
+      "id": "phone",
+      "x": 348.1379631787462,
+      "y": 488.22751230928657,
+      "angle": 0,
+      "role": "main"
+    },
+    {
+      "id": "puzzle",
+      "x": 702.1940032824764,
+      "y": 464.0716591381268,
+      "angle": 0,
+      "role": "main"
+    }
+  ]
+}

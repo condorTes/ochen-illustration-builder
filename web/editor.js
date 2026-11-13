@@ -25,6 +25,10 @@ controls = function () {
   $('up').disabled=busy||selected<0||selected===scene?.items.length-1;
   $('down').disabled=busy||selected<=0;
   $('canvas').classList.toggle('busy',busy);
+  $('editor').disabled=busy||selected<0;
+  $('export').disabled=busy||!scene||!scene.items.length;
+  $('compose').disabled=busy;
+  document.querySelectorAll('.demo').forEach(b=>b.disabled=busy);
 };
 display = function(svg) { remember(); baseDisplay(svg); };
 function syncScene() {
@@ -62,6 +66,21 @@ async function adaptScene() {
   }catch(e){status(e.message,true);}finally{busy=false;syncScene();controls();}
 }
 $('format').onchange=$('size').onchange=adaptScene;
+$('layout').onchange=async()=>{
+  if(!scene||busy)return;
+  busy=true;++renderVersion;controls();
+  try{const data=await(await request('/api/relayout',{scene,layout:$('layout').value})).json();
+    scene=data.scene;display(data.svg);status('Новая раскладка готова. Слои и состояния сохранены.');
+  }catch(e){status(e.message,true);}finally{busy=false;controls();}
+};
+document.querySelectorAll('.demo').forEach(button=>button.onclick=async()=>{
+  if(busy)return;busy=true;++renderVersion;controls();
+  try{const response=await fetch('/api/examples/'+button.dataset.example);
+    if(!response.ok)throw Error('Не удалось открыть пример.');
+    const data=await response.json();scene=data.scene;selected=-1;syncScene();display(data.svg);
+    status('Открыт готовый пример. Это сохранённая композиция, без запроса к ИИ. Можно редактировать.');
+  }catch(e){status(e.message,true);}finally{busy=false;controls();}
+});
 function downloadJSON(value,name){
   const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));
   const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
